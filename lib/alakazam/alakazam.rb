@@ -72,20 +72,20 @@ module Alakazam
         if options[:methods].any?
           options[:methods].each { |method|
             if observer.respond_to? method
-              observer.send method, things
+              observer.send method, *things
             elsif observer.singleton_class.respond_to? method
-              observer.singleton_class.send method, things
+              observer.singleton_class.send method, *things
             elsif observer.respond_to? :"#{method}="
-              observer.send method, things
+              observer.send method, *things
             end
           }
         elsif observer.respond_to? :update
-          observer.update things
+          observer.update *things
         elsif observer.is_a? Proc
-          observer.call things
+          observer.call *things
         else
           options[:methods].each { |method|
-            observer.send(method, things) if observer.respond_to? method
+            observer.send(method, *things) if observer.respond_to? method
           }
         end
       end
