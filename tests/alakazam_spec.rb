@@ -74,7 +74,7 @@ describe Alakazam do
   end
 
   it 'invokes a Proc without explicit notify when notified by observed class' do
-    shiftry.is_observed_by logger, when_change: false
+    shiftry.is_observed_by logger, on_change: false
 
     shiftry.lol
     shiftry.lol
