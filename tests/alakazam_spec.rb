@@ -50,7 +50,7 @@ describe Alakazam do
   end
 
   let(:logger) do
-    logger = -> (*things) { $i += 1 }
+    logger = ->(*things) { $i += 1 }
   end
 
   let(:shiftry) do
