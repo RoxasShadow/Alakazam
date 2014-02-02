@@ -12,7 +12,7 @@ Install
 Examples
 -------
 
-Invoke a Proc on `fire!` (instance method).
+Invoke a Proc on `fire!` (observing an instance methods).
 ```ruby
 class Shiftry
   include Alakazam
@@ -31,7 +31,7 @@ shiftry.is_observed_by logger
 shiftry.lol
 ```
 
-Invoke a Proc on `fire!` (class method).
+Invoke a Proc on `fire!` (observing a class methods).
 ```ruby
 class Shiftry
   extend Alakazam
