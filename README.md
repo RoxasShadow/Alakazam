@@ -12,7 +12,7 @@ Install
 Examples
 -------
 
-Invoke a Proc on `fire!` (observing an instance methods).
+Invoke a Proc on `#fire!` (observing an instance methods).
 ```ruby
 class Shiftry
   include Alakazam
@@ -31,7 +31,7 @@ shiftry.is_observed_by logger
 shiftry.lol
 ```
 
-Invoke a Proc on `fire!` (observing a class methods).
+Invoke a Proc on `#fire!` (observing a class methods).
 ```ruby
 class Shiftry
   extend Alakazam
@@ -49,7 +49,7 @@ Shiftry.is_observed_by logger, on_change: false
 Shiftry.lol
 ```
 
-Invoke a Proc without explicit notify.
+Invoke a Proc without using `#fire!`.
 ```ruby
 class Shiftry
   include Alakazam
@@ -67,7 +67,7 @@ shiftry.is_observed_by logger, on_change: false
 shiftry.lol
 ```
 
-Invoke both the default (`update`) and a custom method of the observer class.
+Invoke both the default (`#update`) and a custom method of the observer class.
 ```ruby
 class Shiftry
   include Alakazam
@@ -95,7 +95,7 @@ shiftry.is_observed_by Logger.new
 shiftry.lol
 ```
 
-Invoke `update` when a variable changes in the observed class.
+Invoke `#update` when a variable changes in the observed class.
 ```ruby
 class Shiftry
   include Alakazam
