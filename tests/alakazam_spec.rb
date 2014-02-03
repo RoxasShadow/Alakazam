@@ -122,4 +122,17 @@ describe Alakazam do
       shiftry.lal.should be 4
     }.counter.should be 2
   end
+
+  it 'handles correctly the observers of the observed class' do
+    shiftry.is_observed_by Logger.new
+    shiftry.is_observed_by logger
+
+    shiftry.has_observer?(logger).should be true
+    shiftry.count_observers.should       be 2
+
+    shiftry.delete_observer logger
+    shiftry.count_observers.should       be 1
+
+    expect { shiftry.__observers__ }.to raise_error
+  end
 end

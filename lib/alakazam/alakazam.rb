@@ -34,27 +34,22 @@ module Alakazam
       end
     }
 
-    @observers ||= {}
-    @observers[observer] = { on_change: on_change, methods: methods }
+    __observers__[observer] = { on_change: on_change, methods: methods }
   end
     alias_method :is_observed_by, :add_observer
-    alias_method :attach,         :add_observer
-    alias_method :observe,        :add_observer
 
   def delete_observer(observer)
-    @observers.delete(observer) if @observers
+    __observers__.delete observer
   end
     alias_method :remove_observer, :delete_observer
-    alias_method :detach,          :delete_observer
-    alias_method :disconnect,      :delete_observer
 
   def has_observer?(observer)
-    @observers.include?(observer) if @observers
+    __observers__.include? observer
   end
     alias_method :is_observed_by?, :has_observer?
 
   def count_observers
-    @observers ? @observers.length : 0
+    __observers__.length
   end
     alias_method :how_many_observers?, :count_observers
 
@@ -75,7 +70,7 @@ module Alakazam
     alias_method :fired?, :changed?
 
   def notify_observers(*things)
-    @observers.each { |observer, options|
+    __observers__.each { |observer, options|
       if !options[:on_change] || changed?
         if options[:methods].any?
           options[:methods].each { |method|
@@ -95,10 +90,15 @@ module Alakazam
           }
         end
       end
-    } if @observers
+    }
 
     @changed = false
   end
     alias_method :notify, :notify_observers
     alias_method :fire,   :notify_observers
+
+  private
+    def __observers__
+      @observers ||= {}
+    end
 end
