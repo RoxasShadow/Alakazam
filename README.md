@@ -12,7 +12,7 @@ Install
 Examples
 -------
 
-Invoke a block on `#fire!` (observing an instance methods).
+Invoke a `block` on `#fire!` (observing an instance methods).
 ```ruby
 require 'alakazam'
 
@@ -33,7 +33,7 @@ shiftry.is_observed_by { |*things|
 shiftry.lol
 ```
 
-Invoke a Proc on `#fire!` (observing a class methods).
+Invoke a `block` on `#fire!` (observing a class methods).
 ```ruby
 require 'alakazam'
 
@@ -53,7 +53,7 @@ Shiftry.is_observed_by(nil, on_change: false) { |*things|
 Shiftry.lol
 ```
 
-Invoke a Proc on `#fire!` (observing an instance methods).
+Invoke a `Proc` on `#fire!` (observing an instance methods).
 ```ruby
 require 'alakazam'
 
@@ -74,7 +74,7 @@ shiftry.is_observed_by logger
 shiftry.lol
 ```
 
-Invoke a Proc on `#fire!` (observing a class methods).
+Invoke a `Proc` on `#fire!` (observing a class methods).
 ```ruby
 require 'alakazam'
 
@@ -94,7 +94,7 @@ Shiftry.is_observed_by logger, on_change: false
 Shiftry.lol
 ```
 
-Invoke a Proc without using `#fire!`.
+Invoke a `Proc` without using `#fire!`.
 ```ruby
 require 'alakazam'
 
