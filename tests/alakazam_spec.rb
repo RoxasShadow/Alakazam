@@ -66,6 +66,34 @@ describe Alakazam do
 
   let(:shiftry) { Shiftry.new }
 
+  it 'invokes the given block when notified by observed class' do
+    shiftry.is_observed_by { |*things|
+      @counter += 1
+    }
+
+    shiftry.lol
+    shiftry.lol
+
+    shiftry.lel
+    shiftry.lel
+
+    @counter.should be 2
+  end
+
+  it 'invokes the given block without explicit notify when notified by observed class' do
+    shiftry.is_observed_by(nil, on_change: false) { |*things|
+      @counter += 1
+    }
+
+    shiftry.lol
+    shiftry.lol
+
+    shiftry.lel
+    shiftry.lel
+
+    @counter.should be 4
+  end
+
   it 'invokes a Proc when notified by observed class' do
     shiftry.is_observed_by logger
 

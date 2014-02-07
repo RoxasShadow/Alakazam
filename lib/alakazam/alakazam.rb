@@ -9,7 +9,7 @@
 #++
 
 module Alakazam
-  def add_observer(observer, options = {})
+  def add_observer(observer = nil, options = {}, &block)
     on_change = if options.include? :on_fire
       options[:on_fire]
     elsif options.include? :on_change
@@ -34,7 +34,8 @@ module Alakazam
       end
     }
 
-    __observers__[observer] = { on_change: on_change, methods: methods }
+    __observers__[block   ] = { on_change: on_change, methods: methods } if block_given?
+    __observers__[observer] = { on_change: on_change, methods: methods } if observer
   end
     alias_method :is_observed_by, :add_observer
 
